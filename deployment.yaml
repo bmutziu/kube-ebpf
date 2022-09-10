@@ -26,7 +26,7 @@ spec:
     spec:
       containers:
         - name: kube-ebpf
-          image: ghcr.io/mrsupiri/kube-ebpf:latest
+          image: ghcr.io/bmutziu/kube-ebpf:latest
           ports:
             - containerPort: 8000
               name: metrics
@@ -41,6 +41,8 @@ spec:
                   fieldPath: spec.nodeName
             - name: PYTHONUNBUFFERED
               value: "1"
+            - name: DEBUG
+              value: "true"
           securityContext:
             privileged: true
             capabilities:
@@ -61,7 +63,7 @@ spec:
       serviceAccountName: kube-ebpf
       initContainers:
         - name: init-headers
-          image: ghcr.io/mrsupiri/kube-ebpf/init-headers:latest
+          image: ghcr.io/bmutziu/init-headers:latest
           imagePullPolicy: IfNotPresent
           securityContext:
             privileged: true
@@ -101,7 +103,7 @@ spec:
             path: /var/cache/linux-headers/generated
         - name: boot-host
           hostPath:
-            path: /
+            path: /boot
         - name: modules-host
           hostPath:
             path: /lib/modules

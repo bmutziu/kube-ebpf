@@ -48,7 +48,7 @@ spec:
         fsGroup: 65534
       containers:
         - name: prometheus
-          image: prom/prometheus:v2.33.1
+          image: prom/prometheus:v2.38.0
           args:
             [
               "--config.file=/etc/prometheus/prometheus.yml",

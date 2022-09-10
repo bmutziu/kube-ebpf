@@ -1,4 +1,5 @@
-FROM alpine:3.8
+FROM alpine:3.16
+LABEL org.opencontainers.image.source https://github.com/bmutziu/kube-ebpf
 RUN apk add --update \
     bash \
     bc \
